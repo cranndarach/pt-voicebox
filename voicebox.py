@@ -121,7 +121,17 @@ class Voicebox(object):
                     self.log = self.log + sentence
                     self.log.remove('START_SENTENCE')
                     print(" ".join(self.log))
-                    return
+                    while True:
+                        save_response = input('Save session? [Y/n]\n')
+                        if save_response.lower() == "y" or save_response.lower() == "yes":
+                            self.save_session()
+                            print("Session saved.")
+                            return
+                        elif save_response.lower() == "n" or save_response.lower() == "no":
+                            print("Quitting without saving.")
+                            return
+                        else:
+                            print("Invalid response.")
                 else:
                     print("That's out of range!")
             except:
